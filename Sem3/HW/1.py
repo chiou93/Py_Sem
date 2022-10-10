@@ -1,21 +1,22 @@
 # 1. Задайте список, состоящий из произвольных чисел, количество задаёт пользователь. 
 # Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётных позициях(не индексах).
 
-# x = [2, 3, 6, 10, 12, 16, 5]
-# #print(x)
-# summ = 0
-# for i in range(1, len(x), 2):
-#     #if i % 2 == 1:
-#         summ += x[i]       
-# print(f"{x} -> сумма элементов на нечётных позициях: {summ}")
+from random import sample
 
-a=str(input()).split() # Сплит благодаря сплит-это теперь список, он состоит из строк, разделенных пробелами, а не из чисел
-for i in range(len(a)): #получаем список из чисел
-   a[i] = int(a[i])
-print(sum(a))
+def list_random_nums(count: int):
+   if count < 0:
+      print("Negative value of the number of numbers!")
+      return []
 
-# lower = int(input("Введите нижнюю границу диапазона:"))
-# upper = int(input("Введите верхнюю границу диапазона:"))
-# for i in range(lower, upper+1):
-#     if(i % 2 != 0):
-#         print(i)
+   list_nums = sample(range(1, count * 2), count)
+   return list_nums
+
+def sum_odd_nums(list_nums: list):
+   sum_nums = 0
+   for i in range(0, len(list_nums), 2):
+      sum_nums += list_nums[i]
+   return sum_nums
+
+all_list = list_random_nums(int(input("Enter the number of numbers: ")))
+print(all_list)
+print(sum_odd_nums(all_list))
